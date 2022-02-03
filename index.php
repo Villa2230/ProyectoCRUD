@@ -5,11 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CRUD ConsigueVentas</title>
+    <!-- Ingresamos una funcion para confirmar la eliminación del postulante -->
     <script type="text/javascript">
         function confirmar(){
             return confirm('¿Deseas eliminar al postulante?');
         }
     </script>
+    <!-- Agregamos algunos estilos de Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
@@ -26,10 +28,10 @@
         //Almacenamos los datos obtenido en una variable resultados
         $resultado=mysqli_query($conexion,$sql);
     ?>
-
+    <!-- Barra de Navegacion para la página -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">CRUD Consigue Ventas</a>
+            <a class="navbar-brand">CRUD Consigue Ventas</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -42,7 +44,7 @@
             </div>
         </div>
     </nav>
-
+    <!-- Creamos una tabla para mostrar la información de la Base de Datos -->
     <table class="table table-sm caption-top">
         <caption>Lista de Practicantes 2022</caption>
         <thead align="center" class="table-light"> 
@@ -73,8 +75,7 @@
                 <td align="center"> <?php echo $filas['Estado_Nombre'] ?></td>
                 <td> <?php echo $filas['Area_Nombre'] ?></td>
                 <td><a href="editar.php?id=<?php echo $filas['Post_ID']; ?>" class="btn btn-primary"> Editar </a></td>
-                <td><a href="eliminar.php?id=<?php echo $filas['Post_ID']; ?>" class="btn btn-danger"> Eliminar </a></td>
-                
+                <td><a href="eliminar.php?id=<?php echo $filas['Post_ID']; ?>" onclick='return confirmar()' class="btn btn-danger"> Eliminar </a></td> 
             </tr>
             <?php
                 }
